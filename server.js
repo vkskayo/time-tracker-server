@@ -12,7 +12,7 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const MONGO_URL = "mongodb+srv://vkskayo:XGe1PpfdgJ8JaRxG@cluster0.bx0xfen.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URL = process.env.MONGO_URL;
 const app = express();
 const httpServer = http.createServer(app);
 
