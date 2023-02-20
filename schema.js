@@ -1,10 +1,10 @@
 export const typeDefs = `#graphql
   type Query {
-    hello: String
     getTasksByDay(id: ID!): [Task]
     getDays: [Day]
-    getDayById: Day
+    getDayById(id: ID!): Day
     getTasks: [Task]
+    getDayByDate(date: String!): Day  
   },
 
   type Day {
@@ -12,6 +12,7 @@ export const typeDefs = `#graphql
     title: String!
     description: String
     hoursWorked: String!
+    date: String!
   }
 
   type Task {
@@ -20,17 +21,20 @@ export const typeDefs = `#graphql
     description: String
     hoursWorked: String
     belongedDay: ID!
+    startedHour:String
   }
 
   input DayInput {
     title: String!
     description: String
+    date: String!
   }
 
   input TaskInput {
     title: String
     description: String
     belongedDay: ID!
+    startedHour: String
   }
 
  type Mutation {
