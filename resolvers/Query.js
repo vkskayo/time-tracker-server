@@ -7,8 +7,8 @@ export const Query = {
   getTasks: async () => {
     return await Task.find();
   },
-  getTasksByDay: async (parent, { id }, context) => {
-    return Task.find({ belongedDay: id });
+  getTasksByDay: async (parent, { date }, context) => {
+    return Task.find({ belongedDay: date });
   },
 
   getDays: async () => {

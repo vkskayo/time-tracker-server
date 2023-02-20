@@ -8,7 +8,7 @@ export const Mutation = {
     const createdDay = new Day({
       title: title,
       description: description,
-      hoursWorked: "10 hours",
+      hoursWorked: 0,
       date: date,
     });
 
@@ -27,7 +27,7 @@ export const Mutation = {
     const createdTask = new Task({
       title: title,
       description: description,
-      hoursWorked: "10hours",
+      hoursWorked: 0,
       belongedDay: belongedDay,
       startedHour: startedHour,
     });
