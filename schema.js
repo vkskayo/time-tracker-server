@@ -37,11 +37,16 @@ export const typeDefs = `#graphql
     startedHour: String
   }
 
+  input TaskUpdateInput{
+    startedHour: String!
+  }
+
  type Mutation {
     createDay(dayInput: DayInput): Day!
     deleteDay(ID:ID!): Boolean
     createTask(taskInput: TaskInput): Task!
     deleteTask(ID:ID!): Boolean
+    updateTask(ID:ID!, taskUpdateInput: TaskUpdateInput): Task
  }
 
 `;

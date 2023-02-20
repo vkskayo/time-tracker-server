@@ -53,4 +53,14 @@ export const Mutation = {
 
     return wasDeleted.deletedCount;
   },
+
+  updateTask: async (_, { ID, taskUpdateInput: { startedHour } }) => {
+    const wasEdited = (
+      await Task.updateOne({ _id: ID }, { $set: { startedHour: startedHour } })
+    ).modifiedCount;
+
+    if (wasEdited) {
+      return Task.findById(ID);
+    }
+  },
 };
