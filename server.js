@@ -34,9 +34,9 @@ await server.start();
 
 app.use(
   "/graphql",
-  cors <
+  /*   cors <
     cors.CorsRequest >
-    { origin: ["http://localhost:5173", "https://studio.apollographql.com"] },
+    { origin: ["http://localhost:5173", "https://studio.apollographql.com"] } */ cors(),
   bodyParser.json(),
   expressMiddleware(server)
 );
