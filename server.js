@@ -32,7 +32,14 @@ mongoose.connect(process.env.MONGO_URL, { UseNewUrlParser: true }).then(() => {
 
 await server.start();
 
-app.use("/graphql", cors(), bodyParser.json(), expressMiddleware(server));
+app.use(
+  "/graphql",
+  cors <
+    cors.CorsRequest >
+    { origin: ["http://localhost:5173", "https://studio.apollographql.com"] },
+  bodyParser.json(),
+  expressMiddleware(server)
+);
 
 await new Promise((resolve) =>
   httpServer.listen({ port: process.env.PORT || 4000 }, resolve)
