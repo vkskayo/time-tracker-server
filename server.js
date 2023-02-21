@@ -37,7 +37,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://time-tracker-server-production.up.railway.app/graphql",
+      "https://time-tracker-server-production.up.railway.app",
     ],
   }),
   bodyParser.json(),
