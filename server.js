@@ -7,12 +7,11 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { typeDefs } from "./schema.js";
 import { Query } from "./resolvers/Query.js";
-import {Mutation} from "./resolvers/Mutation.js";
+import { Mutation } from "./resolvers/Mutation.js";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const MONGO_URL = process.env.MONGO_URL;
 const app = express();
 const httpServer = http.createServer(app);
 
@@ -27,10 +26,9 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-mongoose.connect(MONGO_URL, {UseNewUrlParser: true})
-.then(()=>{
-    console.log("sucessful connection to mongodb")
-})
+mongoose.connect(process.env.MONGO_URL, { UseNewUrlParser: true }).then(() => {
+  console.log("sucessful connection to mongodb");
+});
 
 await server.start();
 
