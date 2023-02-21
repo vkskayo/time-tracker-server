@@ -4,7 +4,7 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import express from "express";
 import http from "http";
 import cors from "cors";
-import  bodyParser from "body-parser";
+import bodyParser from "body-parser";
 import { typeDefs } from "./schema.js";
 import { Query } from "./resolvers/Query.js";
 import { Mutation } from "./resolvers/Mutation.js";
@@ -34,8 +34,13 @@ await server.start();
 
 app.use(
   "/graphql",
-  cors({ origin: ['http://localhost:5173', 'https://studio.apollographql.com'] }),
-  bodyParser.json(), 
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://time-tracker-server-production.up.railway.app/graphql",
+    ],
+  }),
+  bodyParser.json(),
   expressMiddleware(server)
 );
 
