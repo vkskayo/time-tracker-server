@@ -5,6 +5,7 @@ const daySchema = new Schema({
   description: String,
   hoursWorked: String,
   date: String,
+  closed: Boolean,
 });
 
 const model = mongoose.model("Day", daySchema);

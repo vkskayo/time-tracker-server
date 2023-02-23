@@ -10,6 +10,7 @@ export const Mutation = {
       description: description,
       hoursWorked: 0,
       date: date,
+      closed: false,
     });
 
     const res = await createdDay.save();
@@ -61,6 +62,19 @@ export const Mutation = {
 
     if (wasEdited) {
       return Task.findById(ID);
+    }
+  },
+
+  updateDay: async (_, { date, dayUpdateInput: { closed, hoursWorked } }) => {
+    const wasEdited = (
+      await Day.updateOne(
+        { date: date },
+        { $set: { closed: closed, hoursWorked: hoursWorked } }
+      )
+    ).modifiedCount;
+
+    if (wasEdited) {
+      return true;
     }
   },
 };
