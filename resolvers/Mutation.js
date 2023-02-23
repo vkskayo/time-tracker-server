@@ -23,7 +23,7 @@ export const Mutation = {
 
   createTask: async (
     _,
-    { taskInput: { title, description, belongedDay, startedHour } }
+    { taskInput: { title, description, belongedDay, startedHour, isStarted } }
   ) => {
     const createdTask = new Task({
       title: title,
@@ -31,6 +31,7 @@ export const Mutation = {
       hoursWorked: 0,
       belongedDay: belongedDay,
       startedHour: startedHour,
+      isStarted: false,
     });
 
     const res = await createdTask.save();
@@ -55,9 +56,15 @@ export const Mutation = {
     return wasDeleted.deletedCount;
   },
 
-  updateTask: async (_, { ID, taskUpdateInput: { startedHour } }) => {
+  updateTask: async (
+    _,
+    { ID, taskUpdateInput: { startedHour, isStarted } }
+  ) => {
     const wasEdited = (
-      await Task.updateOne({ _id: ID }, { $set: { startedHour: startedHour } })
+      await Task.updateOne(
+        { _id: ID },
+        { $set: { startedHour: startedHour, isStarted: isStarted } }
+      )
     ).modifiedCount;
 
     if (wasEdited) {

@@ -23,6 +23,7 @@ export const typeDefs = `#graphql
     hoursWorked: String
     belongedDay: String!
     startedHour:String!
+    isStarted: Boolean
   }
 
   input DayInput {
@@ -40,6 +41,7 @@ export const typeDefs = `#graphql
 
   input TaskUpdateInput{
     startedHour: String!
+    isStarted: Boolean
   }
 
   input DayUpdateInput{
