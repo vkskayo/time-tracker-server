@@ -23,7 +23,7 @@ export const Mutation = {
 
   createTask: async (
     _,
-    { taskInput: { title, description, belongedDay, startedHour, isStarted } }
+    { taskInput: { title, description, belongedDay, startedHour } }
   ) => {
     const createdTask = new Task({
       title: title,

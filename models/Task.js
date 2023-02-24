@@ -6,6 +6,7 @@ const taskSchema = new Schema({
   hoursWorked: String,
   belongedDay: String,
   startedHour: String,
+  isStarted: Boolean,
 });
 
 const model = mongoose.model("Task", taskSchema);
