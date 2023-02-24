@@ -58,12 +58,18 @@ export const Mutation = {
 
   updateTask: async (
     _,
-    { ID, taskUpdateInput: { startedHour, isStarted } }
+    { ID, taskUpdateInput: { startedHour, isStarted, hoursWorked } }
   ) => {
     const wasEdited = (
       await Task.updateOne(
         { _id: ID },
-        { $set: { startedHour: startedHour, isStarted: isStarted } }
+        {
+          $set: {
+            startedHour: startedHour,
+            isStarted: isStarted,
+            hoursWorked: hoursWorked,
+          },
+        }
       )
     ).modifiedCount;
 
