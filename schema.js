@@ -5,6 +5,7 @@ export const typeDefs = `#graphql
     getDayById(id: ID!): Day
     getTasks: [Task]
     getDayByDate(date: String!): Day  
+    getCurrentWeek(monday: String, today: String ) : [Day]!
   },
 
   type Day {
